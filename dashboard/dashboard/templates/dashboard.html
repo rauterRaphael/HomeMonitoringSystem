@@ -1,0 +1,80 @@
+{% load static %}
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Raphael Rauter">
+  <title>Home Monitoring System</title>    
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <script src="{% static 'js/dashboard.js' %}" type="application/javascript"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+ <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">HMS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'rest_api:node-list' %}">Nodes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'rest_api:data-list' %}">Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+          </li>
+      </div>
+    </div>
+  </nav>
+  <div class="container h-100">
+    <div class="row">
+        <div class="col justify-content-center align-self-center" style="margin-right: 20px;">
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Node Status</h3>
+            <table class="table table-borderless" id="statustable">
+                <thead>
+                    <tr class="table-dark">
+                        <th># Node</th>
+                        <th>last updated</th>
+                        <th>RSSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+  
+                </tbody>
+              </table>
+        </div>
+        <div class="col" style="margin-left: 20px;">
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Node Data</h3>
+            <select class="form-select form-select-md" style="margin-top: 40px; margin-bottom: 20px;" id="nodesWithData">
+                <option>
+                </option>
+            </select>
+            <canvas id="lightChart" width="300" height="100"></canvas>  
+            <canvas id="tempChart" width="300" height="100"></canvas> 
+            <canvas id="battChart" width="300" height="100"></canvas>           
+        </div>
+      </div>
+  </div>  
+  </div>
+</body></html>
