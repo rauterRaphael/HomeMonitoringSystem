@@ -14,6 +14,9 @@ var battChart;
 var oldData;
 var toggle = 0;
 
+nodeSelected = 1;
+renderNewGraph();
+
 $(function () {
     getNodeStatus();
     getNodesWithData();
